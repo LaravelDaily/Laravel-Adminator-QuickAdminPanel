@@ -8,8 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ trans('panel.site_title') }}</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css" rel="stylesheet" />
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
@@ -21,12 +20,32 @@
     @yield('styles')
 </head>
 
-<body class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden login-page">
-    <div class="app flex-row align-items-center">
-        <div class="container">
+<body class="app">
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+    <script>
+        window.addEventListener('load', function load() {
+            var loader = document.getElementById('loader');
+            setTimeout(function() {
+                loader.classList.add('fadeOut');
+            }, 200);
+        });
+    </script>
+    <div class="peers ai-s fxw-nw h-100vh">
+        <div class="d-n@sm- peer peer-greed h-100 pos-r bgr-n bgpX-c bgpY-c bgsz-cv" style="background-image:url(/assets/static/images/bg.jpg)">
+            <div class="pos-a centerXY">
+                <div class="bgc-white bdrs-50p pos-r" style="width:120px;height:120px">
+                    <img class="pos-a centerXY" src="/assets/static/images/logo.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4 peer pX-40 pY-80 h-100 bgc-white scrollable pos-r ps">
             @yield("content")
         </div>
     </div>
+    <script src="{{ asset('js/vendor.js') }}"></script>
+    <script src="{{ asset('js/bundle.js') }}"></script>
     @yield('scripts')
 </body>
 
