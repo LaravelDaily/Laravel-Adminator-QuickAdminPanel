@@ -166,3 +166,7 @@ table.dataTable thead .sorting_desc {
         opacity: 0
     }
 }
+
+.dataTables_wrapper .dataTables_length select {
+    padding: .375rem 1.75rem .375rem .75rem !important;
+}
